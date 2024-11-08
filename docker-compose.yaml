@@ -6,8 +6,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD_FILE=/run/secret/mariadb_root_password
     volumes:
-      - ./mysql-innodb_file_per_table.cnf:/etc/mysql/conf.d/mysql-innodb_file_per_table.cnf:ro
-      - ./mysql-max_allowed_packet.cnf:/etc/mysql/conf.d/mysql-max_allowed_packet.cnf:ro
+#      - ./mysql-innodb_file_per_table.cnf:/etc/mysql/conf.d/mysql-innodb_file_per_table.cnf:ro
+#      - ./mysql-max_allowed_packet.cnf:/etc/mysql/conf.d/mysql-max_allowed_packet.cnf:ro
       - data:/var/lib/mysql
 
 networks:
