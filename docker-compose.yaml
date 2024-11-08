@@ -6,7 +6,7 @@ services:
     container_name: mariadb
     restart: unless-stopped
     networks:
-      - web
+      - public
     env_file:
       - ./app.env
     volumes:
@@ -15,7 +15,7 @@ services:
       - data:/var/lib/mysql
 
 networks:
-  web:
+  public:
     external: true
 
 volumes:
