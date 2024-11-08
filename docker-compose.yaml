@@ -1,10 +1,6 @@
-version: '3'
-
 services:
-  mysql:
+  app:
     image: mariadb:11.2.3
-    container_name: mariadb
-    restart: unless-stopped
     networks:
       - public
     env_file:
