@@ -3,8 +3,8 @@ services:
     image: mariadb:11.2.3
     networks:
       - public
-    env_file:
-      - ./app.env
+    environment:
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secret/mariadb_root_password
     volumes:
       - ./mysql-innodb_file_per_table.cnf:/etc/mysql/conf.d/mysql-innodb_file_per_table.cnf:ro
       - ./mysql-max_allowed_packet.cnf:/etc/mysql/conf.d/mysql-max_allowed_packet.cnf:ro
@@ -12,6 +12,10 @@ services:
 
 networks:
   public:
+    external: true
+
+secrets:
+  mariadb_root_password:
     external: true
 
 volumes:
