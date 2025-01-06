@@ -1,30 +1,16 @@
 services:
   app:
     image: mariadb:11.2.3
+    container_name: mariadb
+    restart: unless-stopped
     networks:
       - public
-    environment:
-      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/mariadb_root_password
-    configs:
-      - source: mariadb_extras.cnf
-        target: /etc/mysql/conf.d/extras.cnf
-    secrets:
-      - mariadb_root_password
     volumes:
-      - data:/var/lib/mysql
+      - ./data:/var/lib/mysql
+      - ./mysql-innodb_file_per_table.cnf:/etc/mysql/conf.d/mysql-innodb_file_per_table.cnf:ro
+      - ./mysql-max_allowed_packet.cnf:/etc/mysql/conf.d/mysql-max_allowed_packet.cnf:ro
 
 networks:
   public:
     external: true
-
-configs:
-   mariadb_extras.cnf:
-    external: true
-
-secrets:
-  mariadb_root_password:
-    external: true
-
-volumes:
-  data:
 
