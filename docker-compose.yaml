@@ -1,7 +1,7 @@
 services:
   app:
     container_name: mariadb
-    image: mariadb:11.6.2-noble
+    image: mariadb:11.7.2-noble
     restart: unless-stopped
     networks:
       - public
