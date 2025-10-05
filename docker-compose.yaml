@@ -4,13 +4,14 @@ services:
     image: mariadb:11.7.2-noble
     restart: unless-stopped
     networks:
-      - public
+      - default
     volumes:
       - ./data:/var/lib/mysql
       - ./mysql-innodb_file_per_table.cnf:/etc/mysql/conf.d/mysql-innodb_file_per_table.cnf:ro
       - ./mysql-max_allowed_packet.cnf:/etc/mysql/conf.d/mysql-max_allowed_packet.cnf:ro
 
 networks:
-  public:
+  default:
+    name: web
     external: true
 
